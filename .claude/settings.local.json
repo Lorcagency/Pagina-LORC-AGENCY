@@ -11,7 +11,13 @@
       "Read(//Users/emilianoortegacastellanos/.antigravity/antigravity/bin/**)",
       "Bash(/opt/homebrew/bin/brew --version)",
       "Bash(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh)",
-      "Bash(bash)"
+      "Bash(bash)",
+      "Bash(git push *)",
+      "Bash(git count-objects *)",
+      "Bash(git gc *)",
+      "Bash(xargs ls *)",
+      "Bash(sort -k5 -rn)",
+      "Bash(git config *)"
     ]
   }
 }

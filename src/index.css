@@ -84,7 +84,14 @@ img { max-width: 100%; display: block; }
 .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
 .btn-ghost:hover { background: var(--blue-50); border-color: var(--blue-400); }
 
-.burger { display: none; background: none; border: none; cursor: pointer; }
+.burger { display: none; background: none; border: none; cursor: pointer; color: var(--ink); }
+
+.mobile-menu { border-top: 1px solid var(--line); background: rgba(240, 253, 244, 0.98); }
+.mobile-menu .container { display: flex; flex-direction: column; padding-top: 12px; padding-bottom: 20px; gap: 0; }
+.mobile-menu a { display: block; padding: 13px 0; font-size: 16px; color: var(--slate-dark); font-weight: 500; border-bottom: 1px solid var(--line); transition: color .2s var(--ease); }
+.mobile-menu a:hover { color: var(--blue-600); }
+.mobile-menu a.active { color: var(--blue-600); font-weight: 600; }
+.mobile-menu-cta { border-bottom: none !important; margin-top: 16px; text-align: center; justify-content: center; width: 100%; }
 
 /* HERO */
 .hero {

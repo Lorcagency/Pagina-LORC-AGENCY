@@ -7,23 +7,27 @@ import Footer from '../components/Footer'
 const TEAM = [
   {
     id: 'socio-1',
-    name: 'Tu nombre aquí',
-    role: 'Co-fundador & CEO',
-    bio: 'Escribe aquí una breve descripción sobre ti: tu experiencia, especialidad y qué te apasiona de LORCAGENCY. Puedes hablar de tu trayectoria, los logros que más te enorgullecen y cómo ayudas a los clientes.',
-    // Reemplaza el src por la ruta de tu foto, ejemplo: '/fotos/emiliano.jpg'
+    name: 'Emiliano Ortega Castellanos',
+    role: 'Co-fundador',
+    bio: [
+      'Ingeniero en nanotecnología con experiencia trabajando de la mano con modelos de inteligencia artificial y soluciones tecnológicas aplicadas a negocio.',
+      'Cuenta con trayectoria en consultoría estratégica para empresas de distintas industrias, donde se enfoca en entender cada operación y diseñar soluciones que generen impacto real.',
+      'En LORCAGENCY, lidera la implementación de estrategias basadas en tecnología para optimizar procesos, escalar operaciones y generar resultados medibles.',
+    ],
     photo: null,
-    linkedin: '#',
-    instagram: '#',
+    instagram: 'https://www.instagram.com/emiliano.ortega.796/',
   },
   {
     id: 'socio-2',
-    name: 'Nombre de tu socio',
-    role: 'Co-fundador & Director de Estrategia',
-    bio: 'Escribe aquí una breve descripción sobre tu socio: su experiencia, especialidad y qué aporta a la agencia. Un párrafo directo y auténtico genera mucha más confianza que un texto genérico.',
-    // Reemplaza el src por la ruta de tu foto, ejemplo: '/fotos/socio.jpg'
+    name: 'Santiago López Rodríguez',
+    role: 'Co-fundador',
+    bio: [
+      'Licenciado en Comunicación con especialidad en Mercadotecnia y Publicidad, con experiencia en marketing, ventas consultivas y reclutamiento estratégico.',
+      'Se especializa en identificar oportunidades de negocio y transformarlas en resultados concretos, combinando visión estratégica con ejecución.',
+      'En LORCAGENCY, lidera el desarrollo de estrategias innovadoras que conectan a las marcas con su mercado y generan valor sostenible.',
+    ],
     photo: null,
-    linkedin: '#',
-    instagram: '#',
+    instagram: 'https://www.instagram.com/lopez7130/',
   },
 ]
 
@@ -92,7 +96,6 @@ export default function QuienesSomos() {
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                         <circle cx="12" cy="7" r="4" />
                       </svg>
-                      <span>Agrega tu foto</span>
                     </div>
                   )}
                 </div>
@@ -101,17 +104,12 @@ export default function QuienesSomos() {
                 <div className="qs-card-body">
                   <div className="section-label" style={{ marginBottom: 8 }}>{member.role}</div>
                   <h3 className="qs-name">{member.name}</h3>
-                  <p className="qs-bio">{member.bio}</p>
+                  {member.bio.map((p, idx) => (
+                    <p key={idx} className="qs-bio">{p}</p>
+                  ))}
 
                   <div className="qs-socials">
-                    <a href={member.linkedin} className="qs-social-btn" aria-label="LinkedIn">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                        <circle cx="4" cy="4" r="2"/>
-                      </svg>
-                      LinkedIn
-                    </a>
-                    <a href={member.instagram} className="qs-social-btn" aria-label="Instagram">
+                    <a href={member.instagram} className="qs-social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                         <circle cx="12" cy="12" r="4"/>

@@ -27,8 +27,6 @@ export default function Nav() {
 
           <div className="nav-links">
             <a href={`${prefix}#productos`}>Productos</a>
-            <a href={`${prefix}#servicios`}>Servicios</a>
-            <a href={`${prefix}#casos`}>Casos</a>
             <Link to="/quienes-somos" className={pathname === '/quienes-somos' ? 'active' : ''}>Quiénes somos</Link>
             <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''}>Contacto</Link>
             <a href={`${prefix}#agendar`} className="btn btn-green">Agendar llamada</a>
@@ -57,8 +55,6 @@ export default function Nav() {
         <div className="mobile-menu">
           <div className="container">
             <a href={`${prefix}#productos`} onClick={close}>Productos</a>
-            <a href={`${prefix}#servicios`} onClick={close}>Servicios</a>
-            <a href={`${prefix}#casos`} onClick={close}>Casos</a>
             <Link to="/quienes-somos" className={pathname === '/quienes-somos' ? 'active' : ''} onClick={close}>Quiénes somos</Link>
             <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''} onClick={close}>Contacto</Link>
             <a href={`${prefix}#agendar`} className="btn btn-green mobile-menu-cta" onClick={close}>Agendar llamada</a>

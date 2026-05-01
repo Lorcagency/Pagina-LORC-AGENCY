@@ -3,8 +3,7 @@ import { pageTransition } from '../animations'
 import Nav from '../components/Nav'
 import Hero from '../components/Hero'
 import Products from '../components/Products'
-import Services from '../components/Services'
-import Cases from '../components/Cases'
+import TeamSection from '../components/TeamSection'
 import Schedule from '../components/Schedule'
 import About from '../components/About'
 import CTA from '../components/CTA'
@@ -16,8 +15,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <Products />
-      <Services />
-      <Cases />
+      <TeamSection />
       <Schedule />
       <About />
       <CTA />

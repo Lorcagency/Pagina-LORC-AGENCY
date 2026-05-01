@@ -7,9 +7,11 @@ const TEAM = [
     name: 'Emiliano Ortega Castellanos',
     role: 'Co-fundador',
     bio: [
-      'Ingeniero en nanotecnología con experiencia trabajando de la mano con modelos de inteligencia artificial y soluciones tecnológicas aplicadas a negocio.',
-      'Cuenta con trayectoria en consultoría estratégica para empresas de distintas industrias, donde se enfoca en entender cada operación y diseñar soluciones que generen impacto real.',
-      'En LORCAGENCY, lidera la implementación de estrategias basadas en tecnología para optimizar procesos, escalar operaciones y generar resultados medibles.',
+      'Ingeniero en nanotecnología por el Tecnológico de Monterrey',
+      'Enfoque en inteligencia artificial aplicada a negocio',
+      'Experiencia trabajando con modelos de IA y soluciones tecnológicas',
+      'Consultoría estratégica para empresas de distintas industrias',
+      'Diseño de soluciones enfocadas en impacto real y optimización de procesos',
     ],
     photo: null,
     instagram: 'https://www.instagram.com/emiliano.ortega.796/',
@@ -19,9 +21,10 @@ const TEAM = [
     name: 'Santiago López Rodríguez',
     role: 'Co-fundador',
     bio: [
-      'Licenciado en Comunicación con especialidad en Mercadotecnia y Publicidad, con experiencia en marketing, ventas consultivas y reclutamiento estratégico.',
-      'Se especializa en identificar oportunidades de negocio y transformarlas en resultados concretos, combinando visión estratégica con ejecución.',
-      'En LORCAGENCY, lidera el desarrollo de estrategias innovadoras que conectan a las marcas con su mercado y generan valor sostenible.',
+      'Licenciado en Comunicación por la Universidad Anáhuac, con especialidad en Mercadotecnia y Publicidad',
+      'Experiencia en marketing, ventas consultivas y reclutamiento estratégico',
+      'Enfoque en identificar oportunidades y convertirlas en resultados',
+      'Desarrollo de estrategias que conectan marcas con su mercado',
     ],
     photo: null,
     instagram: 'https://www.instagram.com/lopez7130/',
@@ -70,9 +73,11 @@ export default function TeamSection() {
               <div className="qs-card-body">
                 <div className="section-label" style={{ marginBottom: 8 }}>{member.role}</div>
                 <h3 className="qs-name">{member.name}</h3>
-                {member.bio.map((p, idx) => (
-                  <p key={idx} className="qs-bio">{p}</p>
-                ))}
+                <ul className="qs-bio-list">
+                  {member.bio.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
                 <div className="qs-socials">
                   <a href={member.instagram} className="qs-social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

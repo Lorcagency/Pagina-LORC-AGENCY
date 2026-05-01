@@ -57,10 +57,6 @@ export default function Cases() {
         >
           {CASES.map((c) => (
             <motion.div key={c.title} className={`case ${c.cls}`} variants={cardVariant}>
-              <div className="case-metric">
-                <strong>{c.metric}</strong>
-                <span>{c.metricLabel}</span>
-              </div>
               <span className="case-tag">{c.tag}</span>
               <h3>{c.title}</h3>
               <p>{c.desc}</p>

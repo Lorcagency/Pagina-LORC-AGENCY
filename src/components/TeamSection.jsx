@@ -13,7 +13,7 @@ const TEAM = [
       'Consultoría estratégica para empresas de distintas industrias',
       'Diseño de soluciones enfocadas en impacto real y optimización de procesos',
     ],
-    photo: null,
+    photo: '/fotos/emiliano.jpg',
     instagram: 'https://www.instagram.com/emiliano.ortega.796/',
   },
   {
@@ -26,7 +26,7 @@ const TEAM = [
       'Enfoque en identificar oportunidades y convertirlas en resultados',
       'Desarrollo de estrategias que conectan marcas con su mercado',
     ],
-    photo: null,
+    photo: '/fotos/santi.jpg',
     instagram: 'https://www.instagram.com/lopez7130/',
   },
 ]

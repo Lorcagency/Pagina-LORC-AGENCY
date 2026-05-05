@@ -20,7 +20,7 @@ export default function Nav() {
       <div className="container">
         <div className="nav-inner">
           <Link to="/" className="logo" onClick={close}>
-            <span className="logo-mark" />
+            <img src="/fotos/logo-agencia.png" alt="LORC Agency logo" className="logo-img" />
             <span style={{ fontWeight: 800, letterSpacing: '-0.03em' }}>LORC</span>
             <span style={{ fontWeight: 500, color: 'var(--slate)', marginLeft: 3, fontSize: '0.85em', letterSpacing: '0.08em' }}>AGENCY</span>
           </Link>

@@ -17,7 +17,11 @@
       "Bash(git gc *)",
       "Bash(xargs ls *)",
       "Bash(sort -k5 -rn)",
-      "Bash(git config *)"
+      "Bash(git config *)",
+      "Bash(git -C \"/Users/emilianoortegacastellanos/Documents/pagina web\" status)",
+      "Bash(git -C \"/Users/emilianoortegacastellanos/Documents/pagina web\" add -A)",
+      "Bash(git -C '/Users/emilianoortegacastellanos/Documents/pagina web' commit -m ' *)",
+      "Bash(git -C \"/Users/emilianoortegacastellanos/Documents/pagina web\" push)"
     ]
   }
 }

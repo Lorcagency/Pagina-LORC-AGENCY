@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion'
 import { scaleUp } from '../animations'
+import { useLang } from '../context/LanguageContext'
+import { translations } from '../translations'
 
 export default function CTA() {
+  const { lang } = useLang()
+  const T = translations[lang].cta
+
   return (
     <section className="cta">
       <div className="container">
@@ -13,14 +18,15 @@ export default function CTA() {
           viewport={{ once: true, margin: '-80px' }}
         >
           <h2>
-            ¿Listo para que tu negocio{' '}
+            {T.titleStart}
             <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontWeight: 400, color: 'var(--blue-400)' }}>
-              crezca
-            </em>?
+              {T.titleEm}
+            </em>
+            {T.titleEnd}
           </h2>
-          <p>Agenda una llamada de diagnóstico gratuita. Si no aportamos valor, no hay por qué seguir.</p>
+          <p>{T.desc}</p>
           <a href="#agendar" className="btn btn-green">
-            Quiero crecer mi negocio
+            {T.btn}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>

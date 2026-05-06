@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import { ease } from '../animations'
+import { useLang } from '../context/LanguageContext'
+import { translations } from '../translations'
 
 export default function Nav() {
   const { pathname } = useLocation()
@@ -9,6 +11,8 @@ export default function Nav() {
   const prefix = isHome ? '' : '/'
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
+  const { lang, toggle } = useLang()
+  const T = translations[lang].nav
 
   return (
     <motion.nav
@@ -26,10 +30,15 @@ export default function Nav() {
           </Link>
 
           <div className="nav-links">
-            <a href={`${prefix}#productos`}>Productos</a>
-            <Link to="/quienes-somos" className={pathname === '/quienes-somos' ? 'active' : ''}>Quiénes somos</Link>
-            <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''}>Contacto</Link>
-            <a href={`${prefix}#agendar`} className="btn btn-green">Agendar llamada</a>
+            <a href={`${prefix}#productos`}>{T.products}</a>
+            <Link to="/quienes-somos" className={pathname === '/quienes-somos' ? 'active' : ''}>{T.about}</Link>
+            <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''}>{T.contact}</Link>
+            <a href={`${prefix}#agendar`} className="btn btn-green">{T.cta}</a>
+            <div className="lang-toggle">
+              <button className={lang === 'es' ? 'active' : ''} onClick={() => lang !== 'es' && toggle()}>ES</button>
+              <span>|</span>
+              <button className={lang === 'en' ? 'active' : ''} onClick={() => lang !== 'en' && toggle()}>EN</button>
+            </div>
           </div>
 
           <button className="burger" aria-label="Menu" onClick={() => setOpen(o => !o)}>
@@ -54,10 +63,15 @@ export default function Nav() {
       {open && (
         <div className="mobile-menu">
           <div className="container">
-            <a href={`${prefix}#productos`} onClick={close}>Productos</a>
-            <Link to="/quienes-somos" className={pathname === '/quienes-somos' ? 'active' : ''} onClick={close}>Quiénes somos</Link>
-            <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''} onClick={close}>Contacto</Link>
-            <a href={`${prefix}#agendar`} className="btn btn-green mobile-menu-cta" onClick={close}>Agendar llamada</a>
+            <a href={`${prefix}#productos`} onClick={close}>{T.products}</a>
+            <Link to="/quienes-somos" className={pathname === '/quienes-somos' ? 'active' : ''} onClick={close}>{T.about}</Link>
+            <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''} onClick={close}>{T.contact}</Link>
+            <a href={`${prefix}#agendar`} className="btn btn-green mobile-menu-cta" onClick={close}>{T.cta}</a>
+            <div className="lang-toggle mobile-lang">
+              <button className={lang === 'es' ? 'active' : ''} onClick={() => { if (lang !== 'es') toggle() }}>ES</button>
+              <span>|</span>
+              <button className={lang === 'en' ? 'active' : ''} onClick={() => { if (lang !== 'en') toggle() }}>EN</button>
+            </div>
           </div>
         </div>
       )}

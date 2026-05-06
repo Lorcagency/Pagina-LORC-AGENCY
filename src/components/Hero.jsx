@@ -1,30 +1,36 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ease, stagger, fadeUp } from '../animations'
+import { useLang } from '../context/LanguageContext'
+import { translations } from '../translations'
 
-const WORDS = ['venda.', 'crezca.', 'se dé a conocer.', 'automatice.', 'destaque.']
-
-function useTypewriter() {
+function useTypewriter(words) {
   const [text, setText] = useState('')
   const [wordIdx, setWordIdx] = useState(0)
   const [deleting, setDeleting] = useState(false)
 
   useEffect(() => {
-    const word = WORDS[wordIdx]
+    setText('')
+    setWordIdx(0)
+    setDeleting(false)
+  }, [words])
+
+  useEffect(() => {
+    const word = words[wordIdx]
     if (!deleting && text === word) {
       const t = setTimeout(() => setDeleting(true), 1800)
       return () => clearTimeout(t)
     }
     if (deleting && text === '') {
       setDeleting(false)
-      setWordIdx(i => (i + 1) % WORDS.length)
+      setWordIdx(i => (i + 1) % words.length)
       return
     }
     const t = setTimeout(() => {
       setText(deleting ? word.slice(0, text.length - 1) : word.slice(0, text.length + 1))
     }, deleting ? 40 : 80)
     return () => clearTimeout(t)
-  }, [text, deleting, wordIdx])
+  }, [text, deleting, wordIdx, words])
 
   return text
 }
@@ -62,18 +68,20 @@ const itemVariants = {
 }
 
 export default function Hero() {
-  const typed = useTypewriter()
+  const { lang } = useLang()
+  const T = translations[lang].hero
+  const typed = useTypewriter(T.words)
 
   return (
     <header className="hero">
       <div className="container">
         <motion.div variants={containerVariants} initial="hidden" animate="visible">
           <motion.div variants={itemVariants}>
-            <div className="eyebrow">Agencia · Marketing · AI · Automatización</div>
+            <div className="eyebrow">{T.eyebrow}</div>
           </motion.div>
 
           <motion.h1 className="hero-title" variants={itemVariants}>
-            Hacemos que tu negocio
+            {T.title}
             <br />
             <span className="typed-wrap">
               <span className="typed">{typed}</span>
@@ -82,22 +90,19 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="hero-sub" variants={itemVariants}>
-            LORCAGENCY es la agencia que une estrategia, marketing digital, automatización e inteligencia
-            artificial para que tu negocio no solo exista — crezca, venda y se dé a conocer.
+            {T.sub}
           </motion.p>
 
           <motion.div className="hero-actions" variants={itemVariants}>
             <a href="#agendar" className="btn btn-green">
-              Quiero crecer mi negocio
+              {T.cta}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </a>
-            <a href="#productos" className="btn btn-ghost">Ver productos</a>
-            <span className="hero-note">Diagnóstico gratis. Sin compromiso.</span>
+            <a href="#productos" className="btn btn-ghost">{T.ghost}</a>
+            <span className="hero-note">{T.note}</span>
           </motion.div>
-
-
         </motion.div>
       </div>
     </header>

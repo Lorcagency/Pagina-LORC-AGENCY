@@ -1,37 +1,12 @@
 import { motion } from 'framer-motion'
 import { fadeUp, slideLeft, slideRight } from '../animations'
-
-const TEAM = [
-  {
-    id: 'socio-1',
-    name: 'Emiliano Ortega Castellanos',
-    role: 'Co-fundador',
-    bio: [
-      'Ingeniero en nanotecnología por el Tecnológico de Monterrey',
-      'Enfoque en inteligencia artificial aplicada a negocio',
-      'Experiencia trabajando con modelos de IA y soluciones tecnológicas',
-      'Consultoría estratégica para empresas de distintas industrias',
-      'Diseño de soluciones enfocadas en impacto real y optimización de procesos',
-    ],
-    photo: '/fotos/emiliano.jpg',
-    instagram: 'https://www.instagram.com/emiliano.ortega.796/',
-  },
-  {
-    id: 'socio-2',
-    name: 'Santiago López Rodríguez',
-    role: 'Co-fundador',
-    bio: [
-      'Licenciado en Comunicación por la Universidad Anáhuac, con especialidad en Mercadotecnia y Publicidad',
-      'Experiencia en marketing, ventas consultivas y reclutamiento estratégico',
-      'Enfoque en identificar oportunidades y convertirlas en resultados',
-      'Desarrollo de estrategias que conectan marcas con su mercado',
-    ],
-    photo: '/fotos/santi.jpg',
-    instagram: 'https://www.instagram.com/lopez7130/',
-  },
-]
+import { useLang } from '../context/LanguageContext'
+import { translations } from '../translations'
 
 export default function TeamSection() {
+  const { lang } = useLang()
+  const T = translations[lang].team
+
   return (
     <section className="qs-team-section">
       <div className="container">
@@ -42,15 +17,15 @@ export default function TeamSection() {
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
         >
-          <div className="section-label">El equipo</div>
-          <h2 className="section-title">Dos socios, <em>una visión</em></h2>
-          <p className="section-desc">Fundamos LORCAGENCY para demostrar que las pymes y emprendedores merecen acceso a las mismas herramientas y estrategias que usan las grandes empresas.</p>
+          <div className="section-label">{T.label}</div>
+          <h2 className="section-title">{T.titleStart}<em>{T.titleEm}</em></h2>
+          <p className="section-desc">{T.desc}</p>
         </motion.div>
 
         <div className="qs-team-grid">
-          {TEAM.map((member, i) => (
+          {T.members.map((member, i) => (
             <motion.div
-              key={member.id}
+              key={member.name}
               className="qs-card"
               variants={i === 0 ? slideLeft : slideRight}
               initial="hidden"

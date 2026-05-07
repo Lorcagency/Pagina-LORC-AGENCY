@@ -3,7 +3,6 @@ import { AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
 import Home from './pages/Home'
 import Contacto from './pages/Contacto'
-import QuienesSomos from './pages/QuienesSomos'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -20,7 +19,6 @@ export default function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/contacto" element={<Contacto />} />
-          <Route path="/quienes-somos" element={<QuienesSomos />} />
         </Routes>
       </AnimatePresence>
     </>

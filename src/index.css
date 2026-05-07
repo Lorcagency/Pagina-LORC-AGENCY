@@ -47,8 +47,6 @@ img { max-width: 100%; display: block; }
 .logo-img {
   width: 34px; height: 34px; flex-shrink: 0;
   object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: contrast(4) brightness(1.5);
 }
 .nav-links { display: flex; gap: 30px; align-items: center; }
 .nav-links a { color: var(--slate-dark); font-size: 15px; font-weight: 500; transition: color .2s var(--ease); }

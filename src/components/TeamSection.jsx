@@ -8,7 +8,7 @@ export default function TeamSection() {
   const T = translations[lang].team
 
   return (
-    <section className="qs-team-section">
+    <section id="nosotros" className="qs-team-section">
       <div className="container">
         <motion.div
           className="section-head center"

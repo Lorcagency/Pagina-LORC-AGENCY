@@ -24,14 +24,14 @@ export default function Nav() {
       <div className="container">
         <div className="nav-inner">
           <Link to="/" className="logo" onClick={close}>
-            <img src="/fotos/logo-agencia.png" alt="LORC Agency logo" className="logo-img" />
+            <img src="/fotos/logo-sin-fondo.png" alt="LORC Agency logo" className="logo-img" />
             <span style={{ fontWeight: 800, letterSpacing: '-0.03em' }}>LORC</span>
             <span style={{ fontWeight: 500, color: 'var(--slate)', marginLeft: 3, fontSize: '0.85em', letterSpacing: '0.08em' }}>AGENCY</span>
           </Link>
 
           <div className="nav-links">
             <a href={`${prefix}#productos`}>{T.products}</a>
-            <Link to="/quienes-somos" className={pathname === '/quienes-somos' ? 'active' : ''}>{T.about}</Link>
+            <a href={`${prefix}#nosotros`}>{T.about}</a>
             <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''}>{T.contact}</Link>
             <a href={`${prefix}#agendar`} className="btn btn-green">{T.cta}</a>
             <div className="lang-toggle">
@@ -64,7 +64,7 @@ export default function Nav() {
         <div className="mobile-menu">
           <div className="container">
             <a href={`${prefix}#productos`} onClick={close}>{T.products}</a>
-            <Link to="/quienes-somos" className={pathname === '/quienes-somos' ? 'active' : ''} onClick={close}>{T.about}</Link>
+            <a href={`${prefix}#nosotros`} onClick={close}>{T.about}</a>
             <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''} onClick={close}>{T.contact}</Link>
             <a href={`${prefix}#agendar`} className="btn btn-green mobile-menu-cta" onClick={close}>{T.cta}</a>
             <div className="lang-toggle mobile-lang">

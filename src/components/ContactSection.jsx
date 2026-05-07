@@ -89,7 +89,7 @@ export default function ContactSection() {
   const T = translations[lang].contact
 
   const infoBlocks = [
-    { label: 'Email', value: 'hola@lorcagency.com', href: 'mailto:hola@lorcagency.com' },
+    { label: 'Email', value: 'lorcagency@outlook.com', href: 'mailto:lorcagency@outlook.com' },
     { label: 'WhatsApp', value: '+52 55 0000 0000', href: 'https://wa.me/525500000000' },
     { label: T.locationLabel, value: 'Ciudad de México, MX', href: null },
   ]

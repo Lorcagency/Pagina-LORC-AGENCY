@@ -23,7 +23,7 @@ export default function Nav() {
     >
       <div className="container">
         <div className="nav-inner">
-          <Link to="/" className="logo" onClick={close}>
+          <Link to="/" className="logo" onClick={() => { close(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
             <img src="/fotos/logo-sin-fondo.png" alt="LORC Agency logo" className="logo-img" />
             <span style={{ fontWeight: 800, letterSpacing: '-0.03em' }}>LORC</span>
             <span style={{ fontWeight: 500, color: 'var(--slate)', marginLeft: 3, fontSize: '0.85em', letterSpacing: '0.08em' }}>AGENCY</span>
@@ -35,9 +35,9 @@ export default function Nav() {
             <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''}>{T.contact}</Link>
             <a href={`${prefix}#agendar`} className="btn btn-green">{T.cta}</a>
             <div className="lang-toggle">
-              <button className={lang === 'es' ? 'active' : ''} onClick={() => lang !== 'es' && toggle()}>ES</button>
+              <button className={lang === 'es' ? 'active' : ''} onClick={() => { if (lang !== 'es') { toggle(); window.scrollTo({ top: 0, behavior: 'smooth' }) } }}>ES</button>
               <span>|</span>
-              <button className={lang === 'en' ? 'active' : ''} onClick={() => lang !== 'en' && toggle()}>EN</button>
+              <button className={lang === 'en' ? 'active' : ''} onClick={() => { if (lang !== 'en') { toggle(); window.scrollTo({ top: 0, behavior: 'smooth' }) } }}>EN</button>
             </div>
           </div>
 
@@ -68,9 +68,9 @@ export default function Nav() {
             <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''} onClick={close}>{T.contact}</Link>
             <a href={`${prefix}#agendar`} className="btn btn-green mobile-menu-cta" onClick={close}>{T.cta}</a>
             <div className="lang-toggle mobile-lang">
-              <button className={lang === 'es' ? 'active' : ''} onClick={() => { if (lang !== 'es') toggle() }}>ES</button>
+              <button className={lang === 'es' ? 'active' : ''} onClick={() => { if (lang !== 'es') { toggle(); close(); window.scrollTo({ top: 0, behavior: 'smooth' }) } }}>ES</button>
               <span>|</span>
-              <button className={lang === 'en' ? 'active' : ''} onClick={() => { if (lang !== 'en') toggle() }}>EN</button>
+              <button className={lang === 'en' ? 'active' : ''} onClick={() => { if (lang !== 'en') { toggle(); close(); window.scrollTo({ top: 0, behavior: 'smooth' }) } }}>EN</button>
             </div>
           </div>
         </div>

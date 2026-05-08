@@ -21,7 +21,9 @@
       "Bash(git -C \"/Users/emilianoortegacastellanos/Documents/pagina web\" status)",
       "Bash(git -C \"/Users/emilianoortegacastellanos/Documents/pagina web\" add -A)",
       "Bash(git -C '/Users/emilianoortegacastellanos/Documents/pagina web' commit -m ' *)",
-      "Bash(git -C \"/Users/emilianoortegacastellanos/Documents/pagina web\" push)"
+      "Bash(git -C \"/Users/emilianoortegacastellanos/Documents/pagina web\" push)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }

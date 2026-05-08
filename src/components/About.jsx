@@ -33,8 +33,8 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
           >
-            {T.values.map((v) => (
-              <motion.div key={v.title} className="value" variants={cardVariant}>
+            {T.values.map((v, i) => (
+              <motion.div key={i} className="value" variants={cardVariant}>
                 <strong>{v.title}</strong>
                 <span>{v.desc}</span>
               </motion.div>

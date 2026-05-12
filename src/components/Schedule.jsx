@@ -1,18 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { getCalApi } from '@calcom/embed-react'
 import { slideLeft, slideRight } from '../animations'
 import { useLang } from '../context/LanguageContext'
 import { translations } from '../translations'
 
-const SLOTS = ['10:00', '11:00', '12:00', '15:00', '16:00', '17:00']
-
-function Calendar({ T }) {
+function Calendar({ T, lang }) {
   const today = new Date()
   const [year, setYear] = useState(today.getFullYear())
   const [month, setMonth] = useState(today.getMonth())
-  const [selectedDay, setSelectedDay] = useState(null)
-  const [selectedSlot, setSelectedSlot] = useState(null)
-  const [confirmed, setConfirmed] = useState(false)
+  const triggerRef = useRef(null)
+
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi({ namespace: '30min' })
+      cal('ui', { locale: lang, hideEventTypeDetails: false, layout: 'month_view' })
+    })()
+  }, [lang])
 
   function changeMonth(delta) {
     let m = month + delta
@@ -20,16 +24,11 @@ function Calendar({ T }) {
     if (m < 0) { m = 11; y-- }
     if (m > 11) { m = 0; y++ }
     setMonth(m); setYear(y)
-    setSelectedDay(null); setSelectedSlot(null)
   }
 
   function selectDay(d, cls) {
-    if (!cls.includes('available')) return
-    setSelectedDay(d); setSelectedSlot(null); setConfirmed(false)
-  }
-
-  function confirm() {
-    if (selectedDay && selectedSlot) setConfirmed(true)
+    if (!cls.includes('available') || !triggerRef.current) return
+    triggerRef.current.click()
   }
 
   const first = new Date(year, month, 1).getDay()
@@ -45,6 +44,16 @@ function Calendar({ T }) {
 
   return (
     <div className="cal-card">
+      {/* Botón oculto que Cal.com intercepta para abrir el popup */}
+      <button
+        ref={triggerRef}
+        data-cal-namespace="30min"
+        data-cal-link="lorca-agency-xafmti/30min"
+        data-cal-config={JSON.stringify({ layout: 'month_view', locale: lang })}
+        style={{ display: 'none' }}
+        aria-hidden="true"
+      />
+
       <div className="cal-head">
         <strong>{T.months[month]} {year}</strong>
         <div className="cal-nav">
@@ -60,7 +69,7 @@ function Calendar({ T }) {
         {days.map((item, i) => (
           <div
             key={i}
-            className={`cal-day ${item.cls}${item.d === selectedDay && item.cls === 'available' ? ' selected' : ''}`}
+            className={`cal-day ${item.cls}`}
             onClick={() => item.d && selectDay(item.d, item.cls)}
           >
             {item.d}
@@ -68,34 +77,9 @@ function Calendar({ T }) {
         ))}
       </div>
 
-      {selectedDay && !confirmed && (
-        <div className="cal-slots">
-          {SLOTS.map((s) => (
-            <div
-              key={s}
-              className={`slot${selectedSlot === s ? ' selected' : ''}`}
-              onClick={() => setSelectedSlot(s)}
-            >
-              {s}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {selectedSlot && !confirmed && (
-        <button type="button" className="btn btn-green cal-cta" onClick={confirm}>
-          {T.confirmBtn}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </button>
-      )}
-
-      {confirmed && (
-        <div className="cal-confirm">
-          {T.confirmed(selectedDay, T.months[month], selectedSlot)}
-        </div>
-      )}
+      <p style={{ marginTop: 16, fontSize: 13, color: 'var(--slate)', textAlign: 'center' }}>
+        {T.clickDay}
+      </p>
     </div>
   )
 }
@@ -121,12 +105,6 @@ export default function Schedule() {
             <ul className="schedule-bullets">
               {T.bullets.map((b, i) => <li key={i}>{b}</li>)}
             </ul>
-            <a href="#contacto" className="btn btn-primary">
-              {T.formBtn}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            </a>
           </motion.div>
 
           <motion.div
@@ -135,7 +113,7 @@ export default function Schedule() {
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
           >
-            <Calendar T={T} />
+            <Calendar T={T} lang={lang} />
           </motion.div>
         </div>
       </div>

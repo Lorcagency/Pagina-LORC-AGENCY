@@ -32,7 +32,6 @@ export default function Nav() {
           <div className="nav-links">
             <a href={`${prefix}#productos`}>{T.products}</a>
             <a href={`${prefix}#nosotros`}>{T.about}</a>
-            <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''}>{T.contact}</Link>
             <a href={`${prefix}#agendar`} className="btn btn-green">{T.cta}</a>
             <div className="lang-toggle">
               <button className={lang === 'es' ? 'active' : ''} onClick={() => { if (lang !== 'es') { toggle(); window.scrollTo({ top: 0, behavior: 'smooth' }) } }}>ES</button>
@@ -65,7 +64,6 @@ export default function Nav() {
           <div className="container">
             <a href={`${prefix}#productos`} onClick={close}>{T.products}</a>
             <a href={`${prefix}#nosotros`} onClick={close}>{T.about}</a>
-            <Link to="/contacto" className={pathname === '/contacto' ? 'active' : ''} onClick={close}>{T.contact}</Link>
             <a href={`${prefix}#agendar`} className="btn btn-green mobile-menu-cta" onClick={close}>{T.cta}</a>
             <div className="lang-toggle mobile-lang">
               <button className={lang === 'es' ? 'active' : ''} onClick={() => { if (lang !== 'es') { toggle(); close(); window.scrollTo({ top: 0, behavior: 'smooth' }) } }}>ES</button>
